@@ -103,7 +103,7 @@ while running: # Main Loop (break after quit)
                 while True:
 
                     screen.fill((40,40,40))
-                    screen.blit(bigfont.render('Reaction Game' , True , white),(100,100))
+                    screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
                     
                     clock.tick(60) # Capping at 60fps so my PC doesnt die
 
