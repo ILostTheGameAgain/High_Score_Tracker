@@ -39,13 +39,19 @@ reaction_button_text = smallfont.render('Reaction' , True , white)
 quit_button = {
 "width" : 140,
 "height" : 40,
-"StartPos": {"x" : 400 ,"y" : 360} # Top left coords
+"StartPos": {"x" : 400 ,"y" : 360}, # Top left coords
+"text": "Quit",
+"font": "Arial",
+"fontsize": 35
 }
 
 reaction_button = {
 "width" : 140,
 "height" : 40,
-"StartPos": {"x" :  180,"y" : 360} # Top left coords
+"StartPos": {"x" :  180,"y" : 360}, # Top left coords
+"text": "Reaction",
+"font": "Arial",
+"fontsize": 35
 }
 
 # END BUTTONS ==================================
@@ -58,9 +64,11 @@ def quit_check(ev):
 def button(dict):
     if dict['StartPos']['x'] <= mouse[0] <= dict['StartPos']['x'] + dict['width'] and dict['StartPos']['y'] <= mouse[1] <= dict['StartPos']['y']+dict['height']: 
         pygame.draw.rect(screen,color_light,[dict['StartPos']['x'],dict['StartPos']['y'],dict['width'],dict['height']]) # If mouse is hovering
+        pygame.display.set_caption('Button')
     else: 
         pygame.draw.rect(screen,color_dark,[dict['StartPos']['x'],dict['StartPos']['y'],dict['width'],dict['height']]) # If mouse is not touching
-    screen.blit(quit_button_text,(dict['StartPos']['x']+0,dict['StartPos']['y'])) # Putting text on the button
+        pygame.display.set_caption('Click on a button!')
+    screen.blit(pygame.font.SysFont(dict['font'],dict['fontsize']).render(dict['text'] , True , white),(dict['StartPos']['x']+0,dict['StartPos']['y'])) # Putting text on the button
 
 running = True
 while running: # Main Loop (break after quit)
