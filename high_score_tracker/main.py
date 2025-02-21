@@ -5,7 +5,6 @@ import random
 import time
 
 
-
 def main():
     width = 720
     height = 720
@@ -26,7 +25,7 @@ def main():
                 for i in range(255):
                     width = random.randint(100,1000)
                     height = random.randint(100,1000)
-                    screen = pygame.display.set_mode((width,height)).fill(((r_offset-color)%255,(g_offset-color)%255,(b_offset-color)%255))
+                    screen = pygame.display.set_mode((width,height)).fill((abs((r_offset-color))%255,abs((g_offset-color))%255,abs((b_offset-color))%255))
                     pygame.display.update()
                     color += 1
                     time.sleep(0.001)
