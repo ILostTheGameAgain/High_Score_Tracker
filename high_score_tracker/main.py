@@ -20,6 +20,6 @@ def main():
                 run = False
         if run:
             pygame.display.update()
-        my_font = pygame.font.SysFont('Arial', 30)
-        text_surface = my_font.render('Some Text', False, (0, 0, 0))
+        my_font = pygame.font.SysFont('Comic Sans MS', 30)
+        my_font.render('Welcome to our game library', False, (0, 0, 0))
 main()
