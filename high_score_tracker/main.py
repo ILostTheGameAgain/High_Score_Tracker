@@ -16,12 +16,10 @@ def main():
 
         for ev in pygame.event.get():
             if ev.type == pygame.QUIT:
-
-                width -= 1
-                height -= 1
-                if width == 1 or height == 1:
-                    pygame.quit()
-                    run = False
+                pygame.quit()
+                run = False
         if run:
             pygame.display.update()
+        my_font = pygame.font.SysFont('Arial', 30)
+        text_surface = my_font.render('Some Text', False, (0, 0, 0))
 main()
