@@ -1,24 +1,16 @@
-
-# High Score Tracker - Jackson / Alec / Tate
-import pygame
-from main_variables import * # Importing resoultion
-pygame.display.set_mode(res)
-
-
 # Alec George, Jackson Hauley, and Tate Morgan, High Score Tracker
 
 import pygame
-
-
+from file_functions import *
+pygame.display.set_mode((720,720))
 
 def main():
-    res = 720,720
-    screen = pygame.display.set_mode(res)
-    white = (0,0,0)
+    width = 720
+    height = 720
     run = True
     while run:
         pygame.display.set_mode((width,height))
-        pygame.display.set_caption("High Score Tracker")
+        pygame.display.set_caption("DELTARUNE")
 
 
 
@@ -28,8 +20,5 @@ def main():
                 run = False
         if run:
             pygame.display.update()
-
-            mouse = pygame.mouse.get_pos() # Stores mouse coordinates
-        
 main()
 
