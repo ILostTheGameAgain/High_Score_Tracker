@@ -4,6 +4,13 @@ res = 720,720
 screen = pygame.display.set_mode(res)
 white = (0,0,0)
 from base_pygame import button as btn
+pygame.init()
+
+white = (255,255,255) 
+color_light = (170,170,170)
+color_dark = (100,100,100) 
+
+
 
 reaction_btn = {
 "width" : 140, # width of the button
@@ -12,9 +19,8 @@ reaction_btn = {
 "text": "Menu", 
 "font": "Arial",
 "fontsize": 35,
-"hover_color": (80,80,80),
-"main_color": (40,40,40),
-"text_offset": 0
+"hover_color": color_light,
+"main_color": color_dark
 }
 
 
