@@ -18,6 +18,7 @@ example_button = {
 }
 """
 
+# button(example_button)
 
 def button(dict):
     mouse = pygame.mouse.get_pos() # Stores mouse coordinates
