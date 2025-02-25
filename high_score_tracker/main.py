@@ -1,3 +1,10 @@
+
+# High Score Tracker - Jackson / Alec / Tate
+import pygame
+from main_variables import * # Importing resoultion
+pygame.display.set_mode(res)
+
+
 # Alec George, Jackson Hauley, and Tate Morgan, High Score Tracker
 
 import pygame
@@ -21,3 +28,4 @@ def main():
         if run:
             pygame.display.update()
 main()
+
