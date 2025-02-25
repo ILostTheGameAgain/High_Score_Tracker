@@ -12,8 +12,9 @@ import pygame
 
 
 def main():
-    width = 720
-    height = 720
+    res = 720,720
+    screen = pygame.display.set_mode(res)
+    white = (0,0,0)
     run = True
     while run:
         pygame.display.set_mode((width,height))
@@ -27,5 +28,8 @@ def main():
                 run = False
         if run:
             pygame.display.update()
+
+            mouse = pygame.mouse.get_pos() # Stores mouse coordinates
+        
 main()
 
