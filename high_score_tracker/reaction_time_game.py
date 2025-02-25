@@ -1,4 +1,4 @@
-# Jackson - Reaction Time Game
+# Jackson - Reaction Time Game JACKSON DID ALL THIS
 import pygame 
 clock = pygame.time.Clock()
 import random
@@ -57,10 +57,7 @@ menu_button = {
 "text_color": (255,255,255)
 }
 
-
-
-# END BUTTONS ==================================
-
+# END BUTTONS =================================
 
 def reaction_game():
     running = True
@@ -121,7 +118,6 @@ def reaction_game():
                             pygame.draw.circle(screen, (0,255,0), (360,360) , 200)
                             started = True
 
-
                         for ev in pygame.event.get():
 
                             if ev.type == pygame.QUIT: 
@@ -159,10 +155,7 @@ def reaction_game():
                                                     reaction_running = False
                                                     break
 
-                                        
-
                                         pygame.display.update() # updates the frames of the game (always use)
-
 
                                 elif screen.get_at(mouse) == (255,0,0) and started == False:
                                     end_reaction_running = True
@@ -196,22 +189,14 @@ def reaction_game():
                                         
                                         pygame.display.update() # updates the frames of the game (always use)
 
-
-
                         if reaction_running == False:
                             break   
 
                         clock.tick(fps) # Capping at 60fps so my PC doesnt die
                         pygame.display.update() # updates the frames of the game (always use)
 
-
-
-
-        
         if running == False:
             break    
 
         clock.tick(fps) # Capping at 60fps so my PC doesnt die
         pygame.display.update() # updates the frames of the game (always use)
-
-reaction_game()
