@@ -2,13 +2,11 @@
 import pygame 
 clock = pygame.time.Clock()
 import random
+from base_pygame import *
+import sys
 
+pygame.init()
 screen = pygame.display.set_mode((720,720))
-
-# Colors
-white = (255,255,255) 
-color_light = (170,170,170)
-color_dark = (100,100,100) 
 
 fps = 60
   
@@ -18,6 +16,8 @@ bigfont = pygame.font.SysFont('Arial',70)
 
 # COMPLETELY EDITABLE button location variables
 
+white = (255,255,255)
+
 quit_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
@@ -25,8 +25,10 @@ quit_button = {
 "text": "Quit",
 "font": "Arial",
 "fontsize": 35,
-"hover_color": color_light,
-"main_color": color_dark
+"hover_color": (170,170,170),
+"main_color": (100,100,100) ,
+"text_offset": 0,
+"text_color": (255,255,255)
 }
 
 reaction_button = {
@@ -36,8 +38,10 @@ reaction_button = {
 "text": "Reaction", 
 "font": "Arial",
 "fontsize": 35,
-"hover_color": color_light,
-"main_color": color_dark
+"hover_color": (170,170,170),
+"main_color": (100,100,100) ,
+"text_offset": 0,
+"text_color": (255,255,255)
 }
 
 menu_button = {
@@ -47,166 +51,167 @@ menu_button = {
 "text": "Menu", 
 "font": "Arial",
 "fontsize": 35,
-"hover_color": color_light,
-"main_color": color_dark
+"hover_color": (170,170,170),
+"main_color": (100,100,100),
+"text_offset": 0,
+"text_color": (255,255,255)
 }
+
+
 
 # END BUTTONS ==================================
 
-def button(dict):
-    if dict['StartPos']['x'] <= mouse[0] <= dict['StartPos']['x'] + dict['width'] and dict['StartPos']['y'] <= mouse[1] <= dict['StartPos']['y']+dict['height']: 
-        pygame.draw.rect(screen,dict['hover_color'],[dict['StartPos']['x'],dict['StartPos']['y'],dict['width'],dict['height']]) # If mouse is hovering
-    else: 
-        pygame.draw.rect(screen,dict['main_color'],[dict['StartPos']['x'],dict['StartPos']['y'],dict['width'],dict['height']]) # If mouse is not touching
-    screen.blit(pygame.font.SysFont(dict['font'],dict['fontsize']).render(dict['text'] , True , white),(dict['StartPos']['x']+0,dict['StartPos']['y'])) # Putting text on the button
 
-running = True
-while running: # Main Loop (break after quit)
+def reaction_game():
+    running = True
+    while running: # Main Loop (break after quit)
 
-    pygame.display.set_caption('Menu')
+        pygame.display.set_caption('Menu')
 
-    screen.fill((40,40,40)) # R G B (fills screen)
+        screen.fill((40,40,40)) # R G B (fills screen)
 
-    # stores the (x,y) coordinates into 
-    # the variable as a tuple 
-    mouse = pygame.mouse.get_pos() # Stores mouse coordinates
+        # stores the (x,y) coordinates into 
+        # the variable as a tuple 
+        mouse = pygame.mouse.get_pos() # Stores mouse coordinates
 
-    button(quit_button) # quit button creation
-    button(reaction_button) # reaction button creation
+        button(quit_button) # quit button creation
+        button(reaction_button) # reaction button creation
 
-    
+        
 
-    for ev in pygame.event.get(): 
-          
-        if ev.type == pygame.QUIT: 
-            pygame.quit() 
-            running = False
-            break
-              
-        if ev.type == pygame.MOUSEBUTTONDOWN: # Mouse Click Checking
-            # This is where you find out where the button was clicking then run something depending on the button
-
-            if quit_button['StartPos']['x'] <= mouse[0] <= quit_button['StartPos']['x']+quit_button['width'] and quit_button['StartPos']['y'] <= mouse[1] <= quit_button['StartPos']['y']+quit_button['height']: 
+        for ev in pygame.event.get(): 
+            
+            if ev.type == pygame.QUIT: 
                 pygame.quit() 
                 running = False
                 break
+                
+            if ev.type == pygame.MOUSEBUTTONDOWN: # Mouse Click Checking
+                # This is where you find out where the button was clicking then run something depending on the button
 
-            if reaction_button['StartPos']['x'] <= mouse[0] <= reaction_button['StartPos']['x']+reaction_button['width'] and reaction_button['StartPos']['y'] <= mouse[1] <= reaction_button['StartPos']['y']+reaction_button['height']: 
-                reaction_running = True
-                start_time = pygame.time.get_ticks()
-                react_time = random.randint(3000,6000)
-                stop = False
-                started = False # Checks if the green thing started or ended yet
-                pygame.display.set_caption('Reaction Game')
-                while reaction_running:
+                if quit_button['StartPos']['x'] <= mouse[0] <= quit_button['StartPos']['x']+quit_button['width'] and quit_button['StartPos']['y'] <= mouse[1] <= quit_button['StartPos']['y']+quit_button['height']: 
+                    pygame.quit() 
+                    running = False
+                    break
 
-                    screen.fill((40,40,40))
+                if reaction_button['StartPos']['x'] <= mouse[0] <= reaction_button['StartPos']['x']+reaction_button['width'] and reaction_button['StartPos']['y'] <= mouse[1] <= reaction_button['StartPos']['y']+reaction_button['height']: 
+                    reaction_running = True
+                    start_time = pygame.time.get_ticks()
+                    react_time = random.randint(3000,6000)
+                    stop = False
+                    started = False # Checks if the green thing started or ended yet
+                    pygame.display.set_caption('Reaction Game')
+                    while reaction_running:
 
-                    screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
-                    screen.blit(smallfont.render('Press the button once it turns green!' , True , white),(80,580))
+                        screen.fill((40,40,40))
 
-                    pygame.draw.circle(screen, (255,0,0), (360,360) , 200)
-                    mouse = pygame.mouse.get_pos()
-                    
-                    
-                    elapsed_time = pygame.time.get_ticks()-start_time
+                        screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
+                        screen.blit(smallfont.render('Press the button once it turns green!' , True , white),(80,580))
 
-                    if elapsed_time >= react_time:
-                        if stop == False:
-                            react_start = pygame.time.get_ticks()
-                            stop = True
-                        pygame.draw.circle(screen, (0,255,0), (360,360) , 200)
-                        started = True
-
-
-                    for ev in pygame.event.get():
-
-                        if ev.type == pygame.QUIT: 
-                            reaction_running = False
-                            running = False
-                            pygame.quit() 
+                        pygame.draw.circle(screen, (255,0,0), (360,360) , 200)
+                        mouse = pygame.mouse.get_pos()
                         
-                        if ev.type == pygame.MOUSEBUTTONDOWN: # If you press down the mouse
+                        
+                        elapsed_time = pygame.time.get_ticks()-start_time
 
-                            if screen.get_at(mouse) == (0,255,0) and started == True: # And its on a red pixel
-                                end_reaction_running = True
-                                click_time = pygame.time.get_ticks()-react_start
-                                score = click_time
-                                while end_reaction_running:
+                        if elapsed_time >= react_time:
+                            if stop == False:
+                                react_start = pygame.time.get_ticks()
+                                stop = True
+                            pygame.draw.circle(screen, (0,255,0), (360,360) , 200)
+                            started = True
 
-                                    screen.fill((40,40,40))
 
-                                    mouse = pygame.mouse.get_pos()
+                        for ev in pygame.event.get():
 
-                                    pygame.draw.circle(screen, (0,255,0), (360,360) , 200)
+                            if ev.type == pygame.QUIT: 
+                                reaction_running = False
+                                running = False
+                                pygame.quit() 
+                            
+                            if ev.type == pygame.MOUSEBUTTONDOWN: # If you press down the mouse
 
-                                    screen.blit(bigfont.render(f'Score: {score}ms' , True , white),(100,60))
+                                if screen.get_at(mouse) == (0,255,0) and started == True: # And its on a red pixel
+                                    end_reaction_running = True
+                                    click_time = pygame.time.get_ticks()-react_start
+                                    score = click_time
+                                    while end_reaction_running:
 
-                                    button(menu_button)
+                                        screen.fill((40,40,40))
 
-                                    for ev in pygame.event.get():
-                                        if ev.type == pygame.QUIT: 
-                                            reaction_running = False
-                                            running = False
-                                            pygame.quit() 
+                                        mouse = pygame.mouse.get_pos()
 
-                                        if ev.type == pygame.MOUSEBUTTONDOWN:
-                                            if menu_button['StartPos']['x'] <= mouse[0] <= menu_button['StartPos']['x']+menu_button['width'] and menu_button['StartPos']['y'] <= mouse[1] <= menu_button['StartPos']['y']+menu_button['height']: 
-                                                end_reaction_running = False
+                                        pygame.draw.circle(screen, (0,255,0), (360,360) , 200)
+
+                                        screen.blit(bigfont.render(f'Score: {score}ms' , True , white),(100,60))
+
+                                        button(menu_button)
+
+                                        for ev in pygame.event.get():
+                                            if ev.type == pygame.QUIT: 
                                                 reaction_running = False
-                                                break
+                                                running = False
+                                                pygame.quit() 
 
-                                    
+                                            if ev.type == pygame.MOUSEBUTTONDOWN:
+                                                if menu_button['StartPos']['x'] <= mouse[0] <= menu_button['StartPos']['x']+menu_button['width'] and menu_button['StartPos']['y'] <= mouse[1] <= menu_button['StartPos']['y']+menu_button['height']: 
+                                                    end_reaction_running = False
+                                                    reaction_running = False
+                                                    break
 
-                                    pygame.display.update() # updates the frames of the game (always use)
+                                        
+
+                                        pygame.display.update() # updates the frames of the game (always use)
 
 
-                            elif screen.get_at(mouse) == (255,0,0) and started == False:
-                                end_reaction_running = True
-                                while end_reaction_running:
+                                elif screen.get_at(mouse) == (255,0,0) and started == False:
+                                    end_reaction_running = True
+                                    while end_reaction_running:
 
-                                    screen.fill((40,40,40))
+                                        screen.fill((40,40,40))
 
-                                    mouse = pygame.mouse.get_pos()
+                                        mouse = pygame.mouse.get_pos()
 
-                                    pygame.draw.circle(screen, (120,0,0), (360,360) , 200)
+                                        pygame.draw.circle(screen, (120,0,0), (360,360) , 200)
 
-                                    screen.blit(bigfont.render('Too Early!' , True , white),(200,60))
-                                    
-                                    button(menu_button)
+                                        screen.blit(bigfont.render('Too Early!' , True , white),(200,60))
+                                        
+                                        button(menu_button)
 
-                                    for ev in pygame.event.get():
-                                        if ev.type == pygame.QUIT: 
-                                            reaction_running = False
-                                            running = False
-                                            end_reaction_running = False
-                                            pygame.quit() 
-
-                                        if ev.type == pygame.MOUSEBUTTONDOWN:
-                                            if menu_button['StartPos']['x'] <= mouse[0] <= menu_button['StartPos']['x']+menu_button['width'] and menu_button['StartPos']['y'] <= mouse[1] <= menu_button['StartPos']['y']+menu_button['height']: 
-                                                end_reaction_running = False
+                                        for ev in pygame.event.get():
+                                            if ev.type == pygame.QUIT: 
                                                 reaction_running = False
-                                                break
+                                                running = False
+                                                end_reaction_running = False
+                                                pygame.quit() 
 
-                                    if end_reaction_running == False:
-                                        break
-                                    
-                                    pygame.display.update() # updates the frames of the game (always use)
+                                            if ev.type == pygame.MOUSEBUTTONDOWN:
+                                                if menu_button['StartPos']['x'] <= mouse[0] <= menu_button['StartPos']['x']+menu_button['width'] and menu_button['StartPos']['y'] <= mouse[1] <= menu_button['StartPos']['y']+menu_button['height']: 
+                                                    end_reaction_running = False
+                                                    reaction_running = False
+                                                    break
 
-
-
-                    if reaction_running == False:
-                        break   
-
-                    clock.tick(fps) # Capping at 60fps so my PC doesnt die
-                    pygame.display.update() # updates the frames of the game (always use)
-
-
+                                        if end_reaction_running == False:
+                                            break
+                                        
+                                        pygame.display.update() # updates the frames of the game (always use)
 
 
-    
-    if running == False:
-        break    
 
-    clock.tick(fps) # Capping at 60fps so my PC doesnt die
-    pygame.display.update() # updates the frames of the game (always use)
+                        if reaction_running == False:
+                            break   
+
+                        clock.tick(fps) # Capping at 60fps so my PC doesnt die
+                        pygame.display.update() # updates the frames of the game (always use)
+
+
+
+
+        
+        if running == False:
+            break    
+
+        clock.tick(fps) # Capping at 60fps so my PC doesnt die
+        pygame.display.update() # updates the frames of the game (always use)
+
+reaction_game()

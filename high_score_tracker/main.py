@@ -15,6 +15,7 @@ def main():
             if ev.type == pygame.QUIT:
                 pygame.quit()
                 run = False
+
         if run:
             pygame.display.update()
 
