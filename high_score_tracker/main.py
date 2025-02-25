@@ -10,7 +10,7 @@ def main():
     run = True
     while run:
         pygame.display.set_mode((width,height))
-        pygame.display.set_caption("DELTARUNE")
+        pygame.display.set_caption("High Score Tracker")
 
 
 
