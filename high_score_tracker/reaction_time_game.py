@@ -3,7 +3,7 @@ import pygame
 clock = pygame.time.Clock()
 import random
 
-screen = pygame.display.set_mode(720,720)
+screen = pygame.display.set_mode((720,720))
 
 # Colors
 white = (255,255,255) 
@@ -11,7 +11,6 @@ color_light = (170,170,170)
 color_dark = (100,100,100) 
 
 fps = 60
-
   
 # Fonts
 smallfont = pygame.font.SysFont('Arial',35) 
