@@ -36,7 +36,7 @@ def main():
 
             if ev.type == pygame.MOUSEBUTTONDOWN: # Mouse Click Checking
 
-                if quit_button['StartPos']['x'] <= mouse[0] <= quit_button['StartPos']['x']+quit_button['width'] and quit_button['StartPos']['y'] <= mouse[1] <= quit_button['StartPos']['y']+quit_button['height']: 
+                if quit_button['StartPos']['x'] <= mouse[0] <= quit_button['StartPos']['x']+quit_button['width'] and quit_button['StartPos']['y'] <= mouse[1] <= quit_button['StartPos']['y']+quit_button['height']: # Checking in this range for clicking the button
                     pygame.quit() 
                     running = False
                     break
