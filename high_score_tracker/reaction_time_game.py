@@ -6,7 +6,6 @@ from base_pygame import *
 import sys
 
 pygame.init()
-screen = pygame.display.set_mode((720,720))
 
 # Colors
 white = (255,255,255) 
