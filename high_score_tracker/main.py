@@ -1,5 +1,4 @@
 # Alec George, Jackson Hauley, and Tate Morgan, High Score Tracker
-
 import pygame
 from file_functions import *
 from reaction_time_game import *
@@ -23,7 +22,6 @@ pygame.display.set_mode((720,720))
 def main():
     run = True
     while run:
-        pygame.display.set_caption("Menu")
 
         mouse = pygame.mouse.get_pos()
 
@@ -40,10 +38,9 @@ def main():
                     pygame.quit() 
                     running = False
                     break
-
+        
         if run:
             pygame.display.update()
-
-
+        button(quit_button)
 main()
 
