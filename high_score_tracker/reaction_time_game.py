@@ -6,7 +6,6 @@ from base_pygame import *
 import sys
 
 pygame.init()
-screen = pygame.display.set_mode((720,720))
 
 fps = 60
   
