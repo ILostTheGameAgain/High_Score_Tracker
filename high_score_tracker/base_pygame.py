@@ -1,6 +1,6 @@
 # Jackson, Alec, Tate, Base pygame functions
 import pygame
-res = 720,720
+res = (720,720)
 screen = pygame.display.set_mode(res)
 
 """
