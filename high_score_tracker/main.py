@@ -7,13 +7,13 @@ from base_pygame import *
 quit_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
-"StartPos": {"x" : 400 ,"y" : 360}, # Top left is 0,0
+"StartPos": {"x" : 550 ,"y" : 650}, # Top left is 0,0
 "text": "Quit",
 "font": "Arial",
 "fontsize": 35,
 "hover_color": (170,170,170),
 "main_color": (100,100,100) ,
-"text_offset": 0,
+"text_offset": 35,
 "text_color": (255,255,255)
 }
 
