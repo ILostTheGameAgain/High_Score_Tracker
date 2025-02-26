@@ -37,8 +37,11 @@ def main():
     while run:
 
         mouse = pygame.mouse.get_pos()
-
+        screen.fill((40,40,40))
         button(quit_button)
+        button(reaction_button)
+
+        
 
         for ev in pygame.event.get():
             if ev.type == pygame.QUIT:
@@ -53,6 +56,7 @@ def main():
                     break
                 if reaction_button['StartPos']['x'] <= mouse[0] <= reaction_button['StartPos']['x']+reaction_button['width'] and reaction_button['StartPos']['y'] <= mouse[1] <= reaction_button['StartPos']['y']+reaction_button['height']: # Checking in this range for clicking the button
                     reaction_game() 
+                    run = True
                     break
         
         if run:

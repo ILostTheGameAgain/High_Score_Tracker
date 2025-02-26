@@ -44,7 +44,7 @@ reaction_button = {
 "fontsize": 35,
 "hover_color": (170,170,170),
 "main_color": (100,100,100) ,
-"text_offset": 0,
+"text_offset": 30,
 "text_color": (255,255,255)
 }
 
@@ -91,7 +91,6 @@ def reaction_game():
                 # This is where you find out where the button was clicking then run something depending on the button
 
                 if quit_button['StartPos']['x'] <= mouse[0] <= quit_button['StartPos']['x']+quit_button['width'] and quit_button['StartPos']['y'] <= mouse[1] <= quit_button['StartPos']['y']+quit_button['height']: 
-                    pygame.quit() 
                     running = False
                     break
 
