@@ -26,7 +26,7 @@ quit_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
 "StartPos": {"x" : 400 ,"y" : 360}, # Top left is 0,0
-"text": "Quit",
+"text": "Menu",
 "font": "Arial",
 "fontsize": 35,
 "hover_color": (170,170,170),
@@ -39,7 +39,7 @@ reaction_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
 "StartPos": {"x" :  180,"y" : 360}, # Top left is 0,0
-"text": "Reaction", 
+"text": "Start", 
 "font": "Arial",
 "fontsize": 35,
 "hover_color": (170,170,170),
@@ -52,7 +52,7 @@ menu_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
 "StartPos": {"x" :  270,"y" : 630}, # Top left is 0,0
-"text": "Menu", 
+"text": "Back", 
 "font": "Arial",
 "fontsize": 35,
 "hover_color": (170,170,170),
@@ -67,7 +67,7 @@ def reaction_game():
     running = True
     while running: # Main Loop (break after quit)
 
-        pygame.display.set_caption('Menu')
+        pygame.display.set_caption('Reaction Game')
 
         screen.fill((40,40,40)) # R G B (fills screen)
 
@@ -78,7 +78,7 @@ def reaction_game():
         button(quit_button) # quit button creation
         button(reaction_button) # reaction button creation
 
-        
+        screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
 
         for ev in pygame.event.get(): 
             
@@ -101,12 +101,12 @@ def reaction_game():
                     react_time = random.randint(3000,6000)
                     stop = False
                     started = False # Checks if the green thing started or ended yet
-                    pygame.display.set_caption('Reaction Game')
+                    pygame.display.set_caption('Click the thingy')
                     while reaction_running:
 
                         screen.fill((40,40,40))
 
-                        screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
+                        
                         screen.blit(smallfont.render('Press the button once it turns green!' , True , white),(80,580))
 
                         pygame.draw.circle(screen, (255,0,0), (360,360) , 200)
