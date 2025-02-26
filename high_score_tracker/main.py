@@ -16,6 +16,18 @@ quit_button = {
 "text_offset": 35,
 "text_color": (255,255,255)
 }
+reaction_button = {
+"width" : 150, # width of the button
+"height" : 40, # height of the button
+"StartPos": {"x" : 350 ,"y" : 650}, # Top left is 0,0
+"text": "Reaction",
+"font": "Arial",
+"fontsize": 35,
+"hover_color": (170,170,170),
+"main_color": (100,100,100) ,
+"text_offset": 5,
+"text_color": (255,255,255)
+}
 
 pygame.display.set_mode((720,720))
 
@@ -25,7 +37,10 @@ def main():
 
         mouse = pygame.mouse.get_pos()
 
+        screen.fill((40,40,40))
+
         button(quit_button)
+        button(reaction_button)
 
         for ev in pygame.event.get():
             if ev.type == pygame.QUIT:
@@ -38,9 +53,10 @@ def main():
                     pygame.quit() 
                     running = False
                     break
-        
+                if reaction_button['StartPos']['x'] <= mouse[0] <= reaction_button['StartPos']['x']+reaction_button['width'] and reaction_button['StartPos']['y'] <= mouse[1] <= reaction_button['StartPos']['y']+reaction_button['height']: # Checking in this range for clicking the button
+                    reaction_game() 
+                    break
         if run:
             pygame.display.update()
-        button(quit_button)
 main()
 
