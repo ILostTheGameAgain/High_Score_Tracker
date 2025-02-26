@@ -2,7 +2,6 @@
 import pygame
 res = 720,720
 screen = pygame.display.set_mode(res)
-white = (0,0,0)
 
 """
 example_button = {
@@ -14,7 +13,8 @@ example_button = {
 "fontsize": 35,
 "hover_color": (80,80,80),
 "main_color": (40,40,40),
-"text_offset": 0
+"text_offset": 0,
+"text_color": (255,255,255)
 }
 """
 
@@ -26,4 +26,4 @@ def button(dict):
         pygame.draw.rect(screen,dict['hover_color'],[dict['StartPos']['x'],dict['StartPos']['y'],dict['width'],dict['height']]) # If mouse is hovering
     else: 
         pygame.draw.rect(screen,dict['main_color'],[dict['StartPos']['x'],dict['StartPos']['y'],dict['width'],dict['height']]) # If mouse is not touching
-    screen.blit(pygame.font.SysFont(dict['font'],dict['fontsize']).render(dict['text'] , True , white),(dict['StartPos']['x']+dict["text_offset"],dict['StartPos']['y'])) # Putting text on the button
+    screen.blit(pygame.font.SysFont(dict['font'],dict['fontsize']).render(dict['text'] , True , dict["text_color"]),(dict['StartPos']['x']+dict["text_offset"],dict['StartPos']['y'])) # Putting text on the button

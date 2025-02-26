@@ -1,45 +1,46 @@
 # Alec George, Jackson Hauley, and Tate Morgan, High Score Tracker
 import pygame
-res = 720,720
-screen = pygame.display.set_mode(res)
-white = (0,0,0)
-from base_pygame import button as btn
-pygame.init()
+from file_functions import *
+from reaction_time_game import *
+from base_pygame import *
 
-white = (255,255,255) 
-color_light = (170,170,170)
-color_dark = (100,100,100) 
-
-
-
-reaction_btn = {
+quit_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
-"StartPos": {"x" :  270,"y" : 630}, # Top left is 0,0
-"text": "Menu", 
+"StartPos": {"x" : 400 ,"y" : 360}, # Top left is 0,0
+"text": "Quit",
 "font": "Arial",
 "fontsize": 35,
-"hover_color": color_light,
-"main_color": color_dark
+"hover_color": (170,170,170),
+"main_color": (100,100,100) ,
+"text_offset": 0,
+"text_color": (255,255,255)
 }
 
+pygame.display.set_mode((720,720))
 
 def main():
-    width = 720
-    height = 720
     run = True
     while run:
-        pygame.display.set_mode((width,height))
-        pygame.display.set_caption("DELTARUNE")
 
+        mouse = pygame.mouse.get_pos()
 
+        button(quit_button)
 
         for ev in pygame.event.get():
             if ev.type == pygame.QUIT:
                 pygame.quit()
                 run = False
+
+            if ev.type == pygame.MOUSEBUTTONDOWN: # Mouse Click Checking
+
+                if quit_button['StartPos']['x'] <= mouse[0] <= quit_button['StartPos']['x']+quit_button['width'] and quit_button['StartPos']['y'] <= mouse[1] <= quit_button['StartPos']['y']+quit_button['height']: # Checking in this range for clicking the button
+                    pygame.quit() 
+                    running = False
+                    break
+
         if run:
             pygame.display.update()
-        btn(reaction_btn)
+        button(quit_button)
 main()
 
