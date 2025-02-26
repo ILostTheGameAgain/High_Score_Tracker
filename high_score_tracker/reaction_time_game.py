@@ -7,6 +7,11 @@ import sys
 
 pygame.init()
 
+# Colors
+white = (255,255,255) 
+color_light = (170,170,170)
+color_dark = (100,100,100) 
+
 fps = 60
   
 # Fonts

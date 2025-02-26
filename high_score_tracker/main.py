@@ -1,5 +1,4 @@
 # Alec George, Jackson Hauley, and Tate Morgan, High Score Tracker
-
 import pygame
 from file_functions import *
 from reaction_time_game import *
@@ -17,25 +16,12 @@ quit_button = {
 "text_offset": 35,
 "text_color": (255,255,255)
 }
-reaction_button = {
-"width" : 140, # width of the button
-"height" : 40, # height of the button
-"StartPos": {"x" :  180,"y" : 360}, # Top left is 0,0
-"text": "Reaction", 
-"font": "Arial",
-"fontsize": 35,
-"hover_color": (170,170,170),
-"main_color": (100,100,100) ,
-"text_offset": 0,
-"text_color": (255,255,255)
-}
 
 pygame.display.set_mode((720,720))
 
 def main():
     run = True
     while run:
-        pygame.display.set_caption("Menu")
 
         mouse = pygame.mouse.get_pos()
 
@@ -52,10 +38,9 @@ def main():
                     pygame.quit() 
                     running = False
                     break
-
+        
         if run:
             pygame.display.update()
-
-
+        button(quit_button)
 main()
 
