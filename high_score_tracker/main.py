@@ -3,7 +3,9 @@ import pygame
 from file_functions import *
 from reaction_time_game import *
 from base_pygame import *
-from file_functions import *
+start_highscores(highscores)
+
+pygame.init()
 
 quit_button = {
 "width" : 140, # width of the button
