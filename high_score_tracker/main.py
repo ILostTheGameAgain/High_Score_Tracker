@@ -3,6 +3,9 @@ import pygame
 from file_functions import *
 from reaction_time_game import *
 from base_pygame import *
+start_highscores(highscores)
+
+pygame.init()
 
 
 quit_button = {
@@ -47,6 +50,7 @@ def main():
         button(quit_button)
         button(reaction_button)
 
+
         for ev in pygame.event.get():
             if ev.type == pygame.QUIT:
                 pygame.quit()
@@ -57,9 +61,11 @@ def main():
                 if quit_button['StartPos']['x'] <= mouse[0] <= quit_button['StartPos']['x']+quit_button['width'] and quit_button['StartPos']['y'] <= mouse[1] <= quit_button['StartPos']['y']+quit_button['height']: # Checking in this range for clicking the button
                     pygame.quit() 
                     running = False
+                    run = False
                     break
                 if reaction_button['StartPos']['x'] <= mouse[0] <= reaction_button['StartPos']['x']+reaction_button['width'] and reaction_button['StartPos']['y'] <= mouse[1] <= reaction_button['StartPos']['y']+reaction_button['height']: # Checking in this range for clicking the button
                     reaction_game() 
+                    run = True
                     break
         if run:
             pygame.display.update()
