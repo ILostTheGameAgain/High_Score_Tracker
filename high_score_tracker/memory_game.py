@@ -2,51 +2,49 @@
 
 #will create a random string of letters and numbers and let the user rewrite it when they no longer see it. If they get it correct, it gets longer
 
-import pygame
+
 import random
 import time
 
-pygame.init()
 
+#function to add a random character to answer
+def add_letter(string):
+    #variable for all possible characters to add
+    possible_figures = "1234567890qwertyuiopasdfghjklzcvbnm"
+    #add a random letter
+    string += possible_figures [random.randint(0,len(possible_figures)-1)]
+    return string
 
 
 #main function
 def main():
-    #dictionary for pygame window information
-    window_info = {
-    "width": 720,
-    "height": 720,
-    "red": 100,
-    "green": 100,
-    "blue": 100
-    }
+    #make variables for score and the string to guess
+    score = 1
+    answer = ""
 
-    #dictionary for a start button
-    start_button = {
-        "width": 100,
-        "height": 100,
-        "red": 255,
-        "green": 255,
-    }
-    #variable for the window
-    window = pygame.display.set_mode((window_info["width"],window_info["height"]))
+    #while loop to run until the user fails
+    while True:
+        #add one character to answer
+        answer = add_letter(answer)
+        #show the answer for 5 seconds
+        print(f"\n{answer}")
+        time.sleep(3)
+        print("\033c")
 
-    #variable to tell if the user has quit/left
-    running = True
+        #variable for the user's guess to what the string is
+        guess = input("what was the string? ")
+        if guess == answer:
+            #if guess and answer are the same, increase score by 1 and add a letter
+            score += 1
+            print("\ncorrect!")
+            time.sleep(1)
+            print("\033c")
+        else:
+            #if they are not the same, quit
+            print(f"\nincorrect. The string was {answer}")
+            print(f"score: {score}")
+            time.sleep(1)
+            break
 
-    while running:
-        #set color of window
-        window.fill((window_info["red"], window_info["green"], window_info["blue"]))
-        
-        #ability to leave the memory game
-        for ev in pygame.event.get():
-            if ev.type == pygame.QUIT:
-                pygame.quit()
-                running = False
-
-
-        #update if it is still running
-        if running:
-            pygame.display.update()
 
 main()
