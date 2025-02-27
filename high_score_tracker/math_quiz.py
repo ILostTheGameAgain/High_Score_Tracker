@@ -26,7 +26,12 @@ def math_quiz():
                 equation = random.randint(1,10), operators[random.randint(0,3)], random.randint(1,10)
                 print(equation)
                 solution = answer(equation)
-                user_input = float(input("What is the answer: "))
+                while True:
+                    try:
+                        user_input = float(input("What is the answer: "))
+                        break
+                    except ValueError:
+                        print("Invalid input please try again")
                 if user_input == solution:
                     print("Correct")
                     math_score += 1
