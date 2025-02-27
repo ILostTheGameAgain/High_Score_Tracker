@@ -4,6 +4,7 @@ clock = pygame.time.Clock()
 import random
 from base_pygame import *
 import sys
+from file_functions import *
 
 pygame.init()
 
@@ -44,7 +45,7 @@ reaction_button = {
 "fontsize": 35,
 "hover_color": (170,170,170),
 "main_color": (100,100,100) ,
-"text_offset": 0,
+"text_offset": 30,
 "text_color": (255,255,255)
 }
 
@@ -91,7 +92,6 @@ def reaction_game():
                 # This is where you find out where the button was clicking then run something depending on the button
 
                 if quit_button['StartPos']['x'] <= mouse[0] <= quit_button['StartPos']['x']+quit_button['width'] and quit_button['StartPos']['y'] <= mouse[1] <= quit_button['StartPos']['y']+quit_button['height']: 
-                    pygame.quit() 
                     running = False
                     break
 
@@ -128,6 +128,7 @@ def reaction_game():
                                 reaction_running = False
                                 running = False
                                 pygame.quit() 
+                                break
                             
                             if ev.type == pygame.MOUSEBUTTONDOWN: # If you press down the mouse
 
@@ -135,6 +136,7 @@ def reaction_game():
                                     end_reaction_running = True
                                     click_time = pygame.time.get_ticks()-react_start
                                     score = click_time
+                                    highscore = False
                                     while end_reaction_running:
 
                                         screen.fill((40,40,40))
@@ -144,6 +146,12 @@ def reaction_game():
                                         pygame.draw.circle(screen, (0,255,0), (360,360) , 200)
 
                                         screen.blit(bigfont.render(f'Score: {score}ms' , True , white),(100,60))
+                                                    
+                                        if check_highscore(score,"reaction",highscores):
+                                            highscore = True
+
+                                        if highscore:
+                                            screen.blit(bigfont.render(f'You got highscore!' , True , (0,0,0)),(100,150))
 
                                         button(menu_button)
 
