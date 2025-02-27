@@ -6,6 +6,9 @@
 import random
 import time
 
+#import functions and variables to check highscore
+from file_functions import *
+
 
 #function to add a random character to answer
 def add_letter(string):
@@ -45,6 +48,8 @@ def main():
             print(f"score: {score}")
             time.sleep(1)
             break
+        
+    check_highscore(score,"memory",highscores)
 
 
 main()
