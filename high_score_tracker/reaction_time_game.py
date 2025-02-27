@@ -1,4 +1,4 @@
-# Jackson - Reaction Time Game
+# Jackson - Reaction Time Game JACKSON DID ALL THIS
 import pygame 
 clock = pygame.time.Clock()
 import random
@@ -6,7 +6,11 @@ from base_pygame import *
 import sys
 
 pygame.init()
-screen = pygame.display.set_mode((720,720))
+
+# Colors
+white = (255,255,255) 
+color_light = (170,170,170)
+color_dark = (100,100,100) 
 
 fps = 60
   
@@ -22,7 +26,7 @@ quit_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
 "StartPos": {"x" : 400 ,"y" : 360}, # Top left is 0,0
-"text": "Quit",
+"text": "Menu",
 "font": "Arial",
 "fontsize": 35,
 "hover_color": (170,170,170),
@@ -35,7 +39,7 @@ reaction_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
 "StartPos": {"x" :  180,"y" : 360}, # Top left is 0,0
-"text": "Reaction", 
+"text": "Start", 
 "font": "Arial",
 "fontsize": 35,
 "hover_color": (170,170,170),
@@ -48,7 +52,7 @@ menu_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
 "StartPos": {"x" :  270,"y" : 630}, # Top left is 0,0
-"text": "Menu", 
+"text": "Back", 
 "font": "Arial",
 "fontsize": 35,
 "hover_color": (170,170,170),
@@ -57,16 +61,13 @@ menu_button = {
 "text_color": (255,255,255)
 }
 
-
-
-# END BUTTONS ==================================
-
+# END BUTTONS =================================
 
 def reaction_game():
     running = True
     while running: # Main Loop (break after quit)
 
-        pygame.display.set_caption('Menu')
+        pygame.display.set_caption('Reaction Game')
 
         screen.fill((40,40,40)) # R G B (fills screen)
 
@@ -77,7 +78,7 @@ def reaction_game():
         button(quit_button) # quit button creation
         button(reaction_button) # reaction button creation
 
-        
+        screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
 
         for ev in pygame.event.get(): 
             
@@ -100,12 +101,12 @@ def reaction_game():
                     react_time = random.randint(3000,6000)
                     stop = False
                     started = False # Checks if the green thing started or ended yet
-                    pygame.display.set_caption('Reaction Game')
+                    pygame.display.set_caption('Click the thingy')
                     while reaction_running:
 
                         screen.fill((40,40,40))
 
-                        screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
+                        
                         screen.blit(smallfont.render('Press the button once it turns green!' , True , white),(80,580))
 
                         pygame.draw.circle(screen, (255,0,0), (360,360) , 200)
@@ -120,7 +121,6 @@ def reaction_game():
                                 stop = True
                             pygame.draw.circle(screen, (0,255,0), (360,360) , 200)
                             started = True
-
 
                         for ev in pygame.event.get():
 
@@ -159,10 +159,7 @@ def reaction_game():
                                                     reaction_running = False
                                                     break
 
-                                        
-
                                         pygame.display.update() # updates the frames of the game (always use)
-
 
                                 elif screen.get_at(mouse) == (255,0,0) and started == False:
                                     end_reaction_running = True
@@ -196,22 +193,14 @@ def reaction_game():
                                         
                                         pygame.display.update() # updates the frames of the game (always use)
 
-
-
                         if reaction_running == False:
                             break   
 
                         clock.tick(fps) # Capping at 60fps so my PC doesnt die
                         pygame.display.update() # updates the frames of the game (always use)
 
-
-
-
-        
         if running == False:
             break    
 
         clock.tick(fps) # Capping at 60fps so my PC doesnt die
         pygame.display.update() # updates the frames of the game (always use)
-
-reaction_game()
