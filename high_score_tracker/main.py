@@ -4,6 +4,7 @@ from file_functions import *
 from reaction_time_game import *
 from base_pygame import *
 
+
 quit_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
@@ -34,6 +35,10 @@ pygame.display.set_mode((720,720))
 def main():
     run = True
     while run:
+        pygame.display.set_caption('High Score Tracker')
+
+    
+        screen.blit(bigfont.render('High Score Tracker' , True , white),(100,60))
 
         mouse = pygame.mouse.get_pos()
 
