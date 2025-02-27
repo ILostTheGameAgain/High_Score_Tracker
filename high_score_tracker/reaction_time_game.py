@@ -81,6 +81,12 @@ def reaction_game():
 
         screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
 
+        y = 500
+        for x in range(data):
+            screen.blit(smallfont.render(x[1]),True,white,(0,y))
+            y += 20
+
+
         for ev in pygame.event.get(): 
             
             if ev.type == pygame.QUIT: 
