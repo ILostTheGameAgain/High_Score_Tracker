@@ -90,4 +90,3 @@ def memory():
                 #exception handling
                 print("\ninvalid input")
 
-memory()
