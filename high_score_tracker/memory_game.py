@@ -77,7 +77,7 @@ def memory():
                 break
             
         #save score
-        check_highscore(score,"memory",highscores,data)
+        #check_highscore(score,"memory",highscores,data)
 
         while True:
             #ask user if they want to play again
