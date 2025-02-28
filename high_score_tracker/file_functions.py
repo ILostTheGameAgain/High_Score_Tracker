@@ -17,9 +17,9 @@ def start_highscores(highscores, data):
                     name, score = row[0], row[1]
                     highscores[name] = int(score) 
     except FileNotFoundError:
-        print("High scores file not found. Starting fresh.")
+        pass
     try:
-        with open("high_score_tracker/tophighscores.csv", "r", newline="") as file:
+        with open("High_Score_Tracker/high_score_tracker/tophighscores.csv", "r", newline="") as file:
             reader = csv.reader(file)
             next(reader)  # Skip the header
             for row in reader:
@@ -28,7 +28,7 @@ def start_highscores(highscores, data):
                     if data_name not in data:
                         data[data_name] = [] 
     except FileNotFoundError:
-        print("Top high scores file not found. Starting fresh.")
+        pass
 
 import csv
 
@@ -39,7 +39,7 @@ def check_highscore(score, game, highscores, data):
     data[game].append(score)
     data[game].sort(reverse=True)
     data[game] = data[game][:10]  
-    with open("your_file.csv", "w", newline="") as file:
+    with open("High_Score_Tracker/high_score_tracker/highscores.csv", "w", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(["Name", "Score"])  # Write header
         for key, value in data.items():
@@ -49,7 +49,7 @@ def check_highscore(score, game, highscores, data):
     if game == "reaction":
         if score < highscores[game]: 
             highscores[game] = score 
-            with open("high_score_tracker/highscores.csv", "w", newline="") as file:
+            with open("High_Score_Tracker/high_score_tracker/highscores.csv", "w", newline="") as file:
                 writer = csv.writer(file)
                 writer.writerow(["Name", "Score"])
                 writer.writerows(highscores.items()) 
@@ -65,11 +65,11 @@ def check_highscore(score, game, highscores, data):
         if score > highscores[game]:
             highscores[game] = score 
    
-            with open("high_score_tracker/highscores.csv", "w", newline="") as file:
+            with open("High_Score_Tracker/high_score_tracker/highscores.csv", "w", newline="") as file:
                 writer = csv.writer(file)
                 writer.writerow(["Name", "Score"])
                 writer.writerows(highscores.items())
-            with open("high_score_tracker/top10highscores.csv", "w", newline="") as csvfile:
+            with open("High_Score_Tracker/high_score_tracker/highscores.csv", "w", newline="") as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(["Name", "Score"])
                 for key, value in data.items():

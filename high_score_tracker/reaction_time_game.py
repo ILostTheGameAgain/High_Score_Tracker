@@ -82,12 +82,15 @@ def reaction_game():
         screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
         top = 1
         y = 360
+        used = []
         screen.blit(smallfont.render("Top 10 Scores:",True,white),(100,y))
         if "reaction" not in data:
             data["reaction"] = []
         for x in range(len(data["reaction"])):
             y += 30
-            screen.blit(smallfont.render(f"{top}: {data["reaction"][x]}",True,white),(100,y))
+            if data["reaction"][x] not in used:
+                screen.blit(smallfont.render(f"{top}: {data["reaction"][x]}",True,white),(100,y))
+                used.append(data["reaction"][x])
             top += 1
         
 
