@@ -24,9 +24,17 @@ def math_quiz():
         if quiz == "1":
             while True:
                 equation = random.randint(1,10), operators[random.randint(0,3)], random.randint(1,10)
-                print(equation)
+                print(f"{equation[0]}{equation[1]}{equation[2]}")
                 solution = answer(equation)
-                user_input = float(input("What is the answer: "))
+                while True:
+                    try: 
+                        user_input = float(input("What is the answer: "))
+                        break
+                    except: 
+                        print("Incorrect input! You lose because its wrong anyway.")
+                        input("Press enter to continue")
+                        user_input = -99999
+                        break
                 if user_input == solution:
                     print("Correct")
                     math_score += 1
@@ -35,5 +43,3 @@ def math_quiz():
                     math_score = 0
         if quiz == "2":
             break
-
-math_quiz()

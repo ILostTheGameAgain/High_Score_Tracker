@@ -26,20 +26,20 @@ white = (255,255,255)
 quit_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
-"StartPos": {"x" : 400 ,"y" : 360}, # Top left is 0,0
+"StartPos": {"x" : 400 ,"y" : 300}, # Top left is 0,0
 "text": "Menu",
 "font": "Arial",
 "fontsize": 35,
 "hover_color": (170,170,170),
 "main_color": (100,100,100) ,
-"text_offset": 0,
+"text_offset": 25,
 "text_color": (255,255,255)
 }
 
 reaction_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
-"StartPos": {"x" :  180,"y" : 360}, # Top left is 0,0
+"StartPos": {"x" :  180,"y" : 300}, # Top left is 0,0
 "text": "Start", 
 "font": "Arial",
 "fontsize": 35,
@@ -58,7 +58,7 @@ menu_button = {
 "fontsize": 35,
 "hover_color": (170,170,170),
 "main_color": (100,100,100),
-"text_offset": 0,
+"text_offset": 35,
 "text_color": (255,255,255)
 }
 
@@ -80,6 +80,14 @@ def reaction_game():
         button(reaction_button) # reaction button creation
 
         screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
+
+
+        y = 360
+        screen.blit(smallfont.render("Top 10 Scores:",True,white),(100,y))
+        for x in range(10):
+            y += 30
+            screen.blit(smallfont.render("test",True,white),(100,y))
+            
 
         for ev in pygame.event.get(): 
             
@@ -151,7 +159,7 @@ def reaction_game():
                                             highscore = True
 
                                         if highscore:
-                                            screen.blit(bigfont.render(f'You got highscore!' , True , (0,0,0)),(100,150))
+                                            screen.blit(bigfont.render(f'You got highscore!' , True , (0,0,0)),(100,350))
 
                                         button(menu_button)
 
