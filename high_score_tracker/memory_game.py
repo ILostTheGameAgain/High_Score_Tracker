@@ -29,9 +29,9 @@ def memory():
         #make variables for score and the string to guess
         score = 1
         answer = ""
-
+        playing = True
         #while loop to run until the user fails
-        while True:
+        while playing:
             #add one character to answer
             answer = add_letter(answer)
             #show the answer for 5 seconds
@@ -58,7 +58,14 @@ def memory():
         check_highscore(score,"memory",highscores)
 
         #ask user if they want to play again
-        replay = input("\nwould you like to play again?\ntype 'y' to play again\ntype 'n' to quit\nyour answer here:")
-
+        replay = input("\nwould you like to play again?\ntype 'y' to play again\ntype 'n' to quit\nyour answer here: ")
+        if replay == "y":
+            break
+        elif replay == "n":
+            playing = False
+            break
+        else:
+            #exception handling
+            print("\ninvalid input")
 #this will be deleted when everything is finished
 memory()
