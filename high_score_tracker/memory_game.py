@@ -22,6 +22,7 @@ def normal(string):
 #function for hard mode, capitalization matters, more characters, and randomizes the string
 def hard(string, length):
     possible_figures = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&*()_+-=~`[];:',<.>/?"
+    string = ""
     for i in range(length):
         string += possible_figures[random.randint(0,len(possible_figures)-1)]
 
@@ -64,7 +65,7 @@ def memory():
             guess = input("what was the string? ").strip()
             if guess == answer:
                 #if guess and answer are the same, increase score by 1 and add a letter
-                score += 1
+                score += int(mode)
                 print(f"\ncorrect!\nscore: {score}")
                 time.sleep(1)
                 print("\033c")
