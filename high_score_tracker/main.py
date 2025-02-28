@@ -5,7 +5,7 @@ from file_functions import *
 from reaction_time_game import *
 from math_quiz import *
 from base_pygame import *
-start_highscores(highscores)
+start_highscores(highscores,data)
 
 pygame.init()
 
@@ -53,13 +53,10 @@ def main():
     while run:
         pygame.display.set_caption('High Score Tracker')
 
-    
-        screen.blit(bigfont.render('High Score Tracker' , True , white),(100,60))
-
         mouse = pygame.mouse.get_pos()
 
         screen.fill((40,40,40))
-
+        screen.blit(bigfont.render('High Score Tracker' , True , white),(100,60))
         button(quit_button)
         button(reaction_button)
         button(quiz_button)

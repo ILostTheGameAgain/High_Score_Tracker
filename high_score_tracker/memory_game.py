@@ -27,7 +27,7 @@ def memory():
     #allow the user to play again using a while loop
     while True:
         #make variables for score and the string to guess
-        score = 1
+        score = 0
         answer = ""
         playing = True
         #while loop to run until the user fails
@@ -55,7 +55,7 @@ def memory():
                 break
             
         #save score
-        check_highscore(score,"memory",highscores)
+        check_highscore(score,"memory",highscores,data)
 
         while True:
             #ask user if they want to play again
