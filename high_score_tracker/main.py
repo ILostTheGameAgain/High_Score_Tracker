@@ -6,7 +6,7 @@ from base_pygame import *
 start_highscores(highscores)
 
 pygame.init()
-
+# has to initialize
 quit_button = {
 "width" : 140, # width of the button
 "height" : 40, # height of the button
