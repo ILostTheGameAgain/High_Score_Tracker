@@ -80,12 +80,16 @@ def reaction_game():
         button(reaction_button) # reaction button creation
 
         screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
-
+        top = 1
         y = 360
         screen.blit(smallfont.render("Top 10 Scores:",True,white),(100,y))
-        for x in range(10):
+        if "reaction" not in data:
+            data["reaction"] = []
+        for x in range(len(data["reaction"])):
             y += 30
-            screen.blit(smallfont.render("test",True,white),(100,y))
+            screen.blit(smallfont.render(f"{top}: {data["reaction"][x]}",True,white),(100,y))
+            top += 1
+        
 
         for ev in pygame.event.get(): 
             
@@ -153,7 +157,7 @@ def reaction_game():
 
                                         screen.blit(bigfont.render(f'Score: {score}ms' , True , white),(100,60))
                                                     
-                                        if check_highscore(score,"reaction",highscores):
+                                        if check_highscore(score,"reaction",highscores,data):
                                             highscore = True
 
                                         if highscore:
