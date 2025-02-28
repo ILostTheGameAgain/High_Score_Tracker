@@ -11,51 +11,51 @@ start_highscores(highscores,data)
 pygame.init()
 
 quit_button = {
-"width" : 140, # width of the button
-"height" : 40, # height of the button
-"StartPos": {"x" : 550 ,"y" : 650}, # Top left is 0,0
+"width" : 300, # width of the button
+"height" : 80, # height of the button
+"StartPos": {"x" : 210 ,"y" : 450}, # Top left is 0,0
 "text": "Quit",
 "font": "Arial",
-"fontsize": 35,
+"fontsize": 70,
 "hover_color": (170,170,170),
 "main_color": (100,100,100) ,
-"text_offset": 35,
+"text_offset": 70,
 "text_color": (255,255,255)
 }
 reaction_button = {
-"width" : 150, # width of the button
-"height" : 40, # height of the button
-"StartPos": {"x" : 350 ,"y" : 650}, # Top left is 0,0
+"width" : 300, # width of the button
+"height" : 80, # height of the button
+"StartPos": {"x" : 210 ,"y" : 150}, # Top left is 0,0
 "text": "Reaction",
 "font": "Arial",
-"fontsize": 35,
+"fontsize": 70,
 "hover_color": (170,170,170),
 "main_color": (100,100,100) ,
 "text_offset": 5,
 "text_color": (255,255,255)
 }
 quiz_button = {
-"width" : 150, # width of the button
-"height" : 40, # height of the button
-"StartPos": {"x" : 150 ,"y" : 650}, # Top left is 0,0
+"width" : 300, # width of the button
+"height" : 80, # height of the button
+"StartPos": {"x" : 210 ,"y" : 250}, # Top left is 0,0
 "text": "Quiz",
 "font": "Arial",
-"fontsize": 35,
+"fontsize": 70,
 "hover_color": (170,170,170),
 "main_color": (100,100,100) ,
-"text_offset": 35,
+"text_offset": 70,
 "text_color": (255,255,255)
 }
 memory_button = {
-"width" : 150, # width of the button
-"height" : 40, # height of the button
-"StartPos": {"x" : 50 ,"y" : 650}, # Top left is 0,0
-"text": "Quiz",
+"width" : 300, # width of the button
+"height" : 80, # height of the button
+"StartPos": {"x" : 210 ,"y" : 350}, # Top left is 0,0
+"text": "Memory",
 "font": "Arial",
-"fontsize": 35,
+"fontsize": 70,
 "hover_color": (170,170,170),
 "main_color": (100,100,100) ,
-"text_offset": 35,
+"text_offset": 20,
 "text_color": (255,255,255)
 }
 
@@ -69,7 +69,7 @@ def main():
         mouse = pygame.mouse.get_pos()
 
         screen.fill((40,40,40))
-        screen.blit(bigfont.render('High Score Tracker' , True , white),(100,60))
+        screen.blit(bigfont.render('High Score Tracker' , True , white),(75,60))
         button(quit_button)
         button(reaction_button)
         button(quiz_button)
