@@ -22,7 +22,7 @@ def add_letter(string):
 #main function
 def memory():
     #introduction to the game
-    print("\nWelcome to the memory game!\nA string of letters/numbers will appear for about 3 seconds.\nYour goal is to type the string of letters again after it disappears.\nAs you get more and more correct, the string will get longer and longer.\npress enter to start\n")
+    print("\nWelcome to the memory game!\nA string of letters/numbers will appear for about 3 seconds.\nYour goal is to type the string of letters again after it disappears.\nAs you get more and more correct, the string will get longer and longer.\npress enter to start")
     input()
     #allow the user to play again using a while loop
     while True:
@@ -44,7 +44,7 @@ def memory():
             if guess == answer:
                 #if guess and answer are the same, increase score by 1 and add a letter
                 score += 1
-                print("\ncorrect!")
+                print(f"\ncorrect!\nscore: {score}")
                 time.sleep(1)
                 print("\033c")
             else:
@@ -54,9 +54,11 @@ def memory():
                 time.sleep(1)
                 break
             
-        #check_highscore(score,"memory",highscores)
+        #save score
+        check_highscore(score,"memory",highscores)
 
         #ask user if they want to play again
         replay = input("\nwould you like to play again?\ntype 'y' to play again\ntype 'n' to quit\nyour answer here:")
 
-main()
+#this will be deleted when everything is finished
+memory()
