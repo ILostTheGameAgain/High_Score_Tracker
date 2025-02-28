@@ -81,13 +81,11 @@ def reaction_game():
 
         screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
 
-
         y = 360
         screen.blit(smallfont.render("Top 10 Scores:",True,white),(100,y))
         for x in range(10):
             y += 30
             screen.blit(smallfont.render("test",True,white),(100,y))
-            
 
         for ev in pygame.event.get(): 
             
