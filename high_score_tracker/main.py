@@ -5,6 +5,7 @@ from file_functions import *
 from reaction_time_game import *
 from math_quiz import *
 from base_pygame import *
+from memory_game import *
 start_highscores(highscores,data)
 
 pygame.init()
@@ -45,6 +46,18 @@ quiz_button = {
 "text_offset": 35,
 "text_color": (255,255,255)
 }
+memory_button = {
+"width" : 150, # width of the button
+"height" : 40, # height of the button
+"StartPos": {"x" : 50 ,"y" : 650}, # Top left is 0,0
+"text": "Quiz",
+"font": "Arial",
+"fontsize": 35,
+"hover_color": (170,170,170),
+"main_color": (100,100,100) ,
+"text_offset": 35,
+"text_color": (255,255,255)
+}
 
 pygame.display.set_mode((720,720))
 
@@ -60,6 +73,7 @@ def main():
         button(quit_button)
         button(reaction_button)
         button(quiz_button)
+        button(memory_button)
 
 
         for ev in pygame.event.get():
@@ -80,6 +94,10 @@ def main():
                     break
                 if quiz_button['StartPos']['x'] <= mouse[0] <= quiz_button['StartPos']['x']+quiz_button['width'] and quiz_button['StartPos']['y'] <= mouse[1] <= quiz_button['StartPos']['y']+quiz_button['height']: # Checking in this range for clicking the button
                     math_quiz() 
+                    run = True
+                    break
+                if memory_button['StartPos']['x'] <= mouse[0] <= memory_button['StartPos']['x']+memory_button['width'] and memory_button['StartPos']['y'] <= mouse[1] <= memory_button['StartPos']['y']+memory_button['height']: # Checking in this range for clicking the button
+                    memory() 
                     run = True
                     break
         if run:

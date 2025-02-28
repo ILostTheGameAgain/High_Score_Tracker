@@ -23,20 +23,24 @@ def math_quiz():
         quiz = input("Welcome to the math game press 1 to start and 2 to return to the main menu: ")
         if quiz == "1":
             while True:
+                #This gets the equation and runs the answer function
                 equation = random.randint(1,10), operators[random.randint(0,3)], random.randint(1,10)
                 print(f"{equation[0]}{equation[1]}{equation[2]}")
                 solution = answer(equation)
                 while True:
                     try:
+                        #This gets user imput
                         user_input = float(input("What is the answer: "))
                         break
                     except ValueError:
                         print("Invalid input please try again")
+                        #This checks if its correct
                 if user_input == solution:
                     print("Correct")
                     math_score += 1
                 elif user_input != solution:
                     print("Im sorry that is incorrect your score was", math_score)
                     math_score = 0
+                    break
         if quiz == "2":
             break
