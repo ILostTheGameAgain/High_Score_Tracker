@@ -13,7 +13,7 @@ from file_functions import *
 #function to add a random character to answer
 def add_letter(string):
     #variable for all possible characters to add
-    possible_figures = "1234567890qwertyuiopasdfghjklzcvbnm"
+    possible_figures = "1234567890QWERTYIOPASDFGHJKLZXCVBNM"
     #add a random letter
     string += possible_figures [random.randint(0,len(possible_figures)-1)]
     return string
@@ -40,8 +40,8 @@ def memory():
             print("\033c")
 
             #variable for the user's guess to what the string is
-            guess = input("what was the string? ")
-            if guess == answer:
+            guess = input("what was the string? ").strip().lower()
+            if guess == answer.lower():
                 #if guess and answer are the same, increase score by 1 and add a letter
                 score += 1
                 print(f"\ncorrect!\nscore: {score}")
@@ -57,15 +57,16 @@ def memory():
         #save score
         check_highscore(score,"memory",highscores)
 
-        #ask user if they want to play again
-        replay = input("\nwould you like to play again?\ntype 'y' to play again\ntype 'n' to quit\nyour answer here: ")
-        if replay == "y":
-            break
-        elif replay == "n":
-            playing = False
-            break
-        else:
-            #exception handling
-            print("\ninvalid input")
+        while True:
+            #ask user if they want to play again
+            replay = input("\nwould you like to play again?\ntype 'y' to play again\ntype 'n' to quit\nyour answer here: ").strip().lower()
+            if replay == "y":
+                break
+            elif replay == "n":
+                playing = False
+                break
+            else:
+                #exception handling
+                print("\ninvalid input")
 #this will be deleted when everything is finished
 memory()
