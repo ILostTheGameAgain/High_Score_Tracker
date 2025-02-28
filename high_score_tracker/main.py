@@ -1,4 +1,4 @@
-# Alec George, Jackson Hauley, and Tate Morgan, High Score Tracker
+#Alec George, Jackson Hauley, and Tate Morgan, High Score Tracker
 import pygame
 clock = pygame.time.Clock()
 from file_functions import *
@@ -31,7 +31,7 @@ reaction_button = {
 "fontsize": 70,
 "hover_color": (170,170,170),
 "main_color": (100,100,100) ,
-"text_offset": 5,
+"text_offset": 10,
 "text_color": (255,255,255)
 }
 quiz_button = {
@@ -104,4 +104,3 @@ def main():
             pygame.display.update()
         clock.tick(fps)
 main()
-
