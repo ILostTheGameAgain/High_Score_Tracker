@@ -68,5 +68,4 @@ def memory():
             else:
                 #exception handling
                 print("\ninvalid input")
-#this will be deleted when everything is finished
-memory()
+
