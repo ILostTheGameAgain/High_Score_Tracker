@@ -27,14 +27,11 @@ def math_quiz():
                 print(f"{equation[0]}{equation[1]}{equation[2]}")
                 solution = answer(equation)
                 while True:
-                    try: 
+                    try:
                         user_input = float(input("What is the answer: "))
                         break
-                    except: 
-                        print("Incorrect input! You lose because its wrong anyway.")
-                        input("Press enter to continue")
-                        user_input = -99999
-                        break
+                    except ValueError:
+                        print("Invalid input please try again")
                 if user_input == solution:
                     print("Correct")
                     math_score += 1
