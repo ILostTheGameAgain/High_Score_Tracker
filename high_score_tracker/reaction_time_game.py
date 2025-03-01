@@ -80,20 +80,19 @@ def reaction_game():
         button(reaction_button) # reaction button creation
 
         screen.blit(bigfont.render('Reaction Game' , True , white),(100,60))
-        top = 1
         y = 360
-        used = []
+        top = 1
         screen.blit(smallfont.render("Top 10 Scores:",True,white),(100,y))
-        if "reaction" not in data:
-            data["reaction"] = []
-        for x in range(len(data["reaction"])):
+        if len(highscores["reaction"]) >= 10:
+            reactionscores = 10
+        else:
+            reactionscores = len(highscores["reaction"])
+        for x in range(reactionscores):
             y += 30
-            if data["reaction"][x] not in used:
-                screen.blit(smallfont.render(f"{top}: {data["reaction"][x]}",True,white),(100,y))
-                used.append(data["reaction"][x])
+            screen.blit(smallfont.render(f"{top}: {highscores["reaction"][x]}",True,white),(100,y))
+            
             top += 1
         
-
         for ev in pygame.event.get(): 
             
             if ev.type == pygame.QUIT: 
@@ -150,6 +149,8 @@ def reaction_game():
                                     click_time = pygame.time.get_ticks()-react_start
                                     score = click_time
                                     highscore = False
+                                    if check_highscore(score,"reaction",highscores) and stop == 0:
+                                        highscore = True
                                     while end_reaction_running:
 
                                         screen.fill((40,40,40))
@@ -160,8 +161,8 @@ def reaction_game():
 
                                         screen.blit(bigfont.render(f'Score: {score}ms' , True , white),(100,60))
                                                     
-                                        if check_highscore(score,"reaction",highscores,data):
-                                            highscore = True
+                                        
+
 
                                         if highscore:
                                             screen.blit(bigfont.render(f'You got highscore!' , True , (0,0,0)),(100,350))

@@ -6,7 +6,7 @@ from reaction_time_game import *
 from math_quiz import *
 from base_pygame import *
 from memory_game import *
-start_highscores(highscores,data)
+start_highscores(highscores)
 
 pygame.init()
 
