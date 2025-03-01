@@ -73,6 +73,17 @@ def memory():
                 #if they are not the same, quit
                 print(f"\nincorrect. The string was {answer}")
                 print(f"score: {score}")
+                if check_highscore(score,"memory",highscores):
+                    print("You got highscore!")
+                print("Top 10 scores:")
+                top = 1
+                if len(highscores["memory"]) >= 10:
+                    reactionscores = 10
+                else:
+                    reactionscores = len(highscores["memory"])
+                for x in range(reactionscores):
+                    print(f"{top}: {highscores["memory"][x]}")
+                    top += 1
                 time.sleep(1)
                 break
             

@@ -3,78 +3,41 @@
 import csv
 
 highscores = {}
-data = {}
+def start_highscores(highscores):
+    with open('high_score_tracker/highscores.csv', mode='r', newline='') as file:
+        reader = csv.reader(file)
+        next(reader) 
+        for row in reader:
+            game = row[0]
+            scores = list(map(int, row[1:]))  
+            highscores[game] = scores
 
-# This checks then overwrites if you got the highscore, returns TRUE if highscore was passed, returns FALSE if you didn't beat the highscore
-
-def start_highscores(highscores, data):
-    try:
-        with open("high_score_tracker/highscores.csv", "r") as file:
-            reader = csv.reader(file)
-            next(reader)  # Skip the header
-            for row in reader:
-                if len(row) == 2: 
-                    name, score = row[0], row[1]
-                    highscores[name] = int(score) 
-    except FileNotFoundError:
-        pass
-    try:
-        with open("High_Score_Tracker/high_score_tracker/tophighscores.csv", "r", newline="") as file:
-            reader = csv.reader(file)
-            next(reader)  # Skip the header
-            for row in reader:
-                if len(row) == 2: 
-                    data_name = row[0].strip()
-                    if data_name not in data:
-                        data[data_name] = [] 
-    except FileNotFoundError:
-        pass
-
-import csv
-
-def check_highscore(score, game, highscores, data):
-    score = int(score)
-    if game not in data:
-        data[game] = []  
-    data[game].append(score)
-    data[game].sort(reverse=True)
-    data[game] = data[game][:10]  
-    with open("High_Score_Tracker/high_score_tracker/highscores.csv", "w", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(["Name", "Score"])  # Write header
-        for key, value in data.items():
-            writer.writerow([key] + value)  
-    if game not in highscores:
-        highscores[game] = score  
+def check_highscore(score, game, highscores):
+    highscores[game].append(score)
+    highscores["reaction"].sort()
+    highscores["memory"].sort()
+    highscores["math"].sort()
+    highscores["math"].reverse()
+    highscores["memory"].reverse()
     if game == "reaction":
-        if score < highscores[game]: 
-            highscores[game] = score 
-            with open("High_Score_Tracker/high_score_tracker/highscores.csv", "w", newline="") as file:
-                writer = csv.writer(file)
-                writer.writerow(["Name", "Score"])
-                writer.writerows(highscores.items()) 
-            with open("high_score_tracker/top10highscores.csv", "w", newline="") as csvfile:
-                writer = csv.writer(csvfile)
-                writer.writerow(["Name", "Score"])
-                for key, value in data.items():
-                    writer.writerow([key] + value) 
-            return True 
+        if score < highscores["reaction"][0]:
+            writeback()
+            return True
         else:
-            return False  # No new high score for "reaction"
+            writeback()
+            return False
     else:
-        if score > highscores[game]:
-            highscores[game] = score 
-   
-            with open("High_Score_Tracker/high_score_tracker/highscores.csv", "w", newline="") as file:
-                writer = csv.writer(file)
-                writer.writerow(["Name", "Score"])
-                writer.writerows(highscores.items())
-            with open("High_Score_Tracker/high_score_tracker/highscores.csv", "w", newline="") as csvfile:
-                writer = csv.writer(csvfile)
-                writer.writerow(["Name", "Score"])
-                for key, value in data.items():
-                    writer.writerow([key] + value)  
-
-            return True  # New high score for other games
+        if score > highscores[game][0]:
+            writeback()
+            return True
         else:
-            return False  
+            writeback()
+            return False
+        
+def writeback():
+    with open('high_score_tracker/highscores.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['game', 'scores'])  # Writing header
+        for game, scores in highscores.items():
+            writer.writerow([game] + scores)
+

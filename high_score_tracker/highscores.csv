@@ -1,14 +1,4 @@
-Name,Score
-<<<<<<< HEAD
-reaction,251
-memory,0
-math,0
-=======
-reaction,217
-math,0
-<<<<<<< HEAD
-memory,4
->>>>>>> 4fd64b60536560e70f46177262688ac0ee987ae2
-=======
-memory,7
->>>>>>> fdc82b31974a5e23f688593d2ad39f5c0ab7cb6a
+game,scores
+reaction,199,214,214,229,231,246,250,266,266,269,432,17475
+memory,10,5
+math,5,4,3,0
